@@ -1,4 +1,4 @@
-## Unity Debugger Extension for Visual Studio Code
+# Unity Debugger Extension for Visual Studio Code
 
 This extension is not officially supported by Unity Technologies.
 
@@ -38,11 +38,53 @@ Strings in the variable view is truncated to 100 characters, with appended ellip
 
 ## Building
 
-To build this repository, clone it then get all submodules:
+### Dependencies
+
+- Visual Studio
+- Visual Studio Code
+- NPM
+
+You should have at least a basic understanding of how [VS Code extensions are
+developed][vsc-ext] before working on this extension.
+
+### Quick Start
+
+To start building this repository, clone with the `--recursive` parameter to
+retrieve all submodules.
 
 ```bash
-git clone https://github.com/Unity-Technologies/vscode-unity-debug
-cd vscode-unity-debug
-git submodule update --init --recursive
+git clone --recursive https://github.com/Unity-Technologies/vscode-unity-debug
 ```
-Then open `VSCode-UnityDebug.sln` in Visual Studio.
+
+Open `VSCode-UnityDebug.sln` in Visual Studio and build `UnityDebug`.
+
+If you're missing any targeting packs (ex: .NET Framework 4.7.1), download and
+install them as prompted. You'll then want to restart Visual Studio, clean the
+solution, and then build the project again. (You'll also follow these steps if
+you get "metadata" errors.)
+
+If you haven't already, install "Visual Studio Code Extensions" from NPM.
+
+```bash
+npm install -g vsce
+```
+
+You should be able to now build the extension and begin developing/debugging it
+using Visual Studio Code.
+
+```bash
+# install project dependencies
+npm install
+
+# package the extension
+vsce package
+```
+
+Alternatively, you can open the repository in VS Code and use the provided
+Debug Task ("Launch Extension") to launch a new instance of VS Code with your
+newly built version of this extension.
+
+For more information about working with Visual Studio Code Extensions, see the
+[official documentation from Microsoft][vsc-ext].
+
+[vsc-ext]:https://code.visualstudio.com/api
